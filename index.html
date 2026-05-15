@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do list</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="app__title">To-Do list</h1>
+
+    <form class="form" id="todo-form" aria-label="Add a new task">
+      <label class="form__label" for="todo-input">New task</label>
+      <div class="form__row">
+        <input
+          class="form__input"
+          type="text"
+          id="todo-input"
+          name="text"
+          autocomplete="off"
+          placeholder="What needs doing?"
+          maxlength="500"
+          required
+        >
+        <button class="form__submit" type="submit">Add</button>
+      </div>
+    </form>
+
+    <p class="empty" id="empty-state" hidden>No tasks yet. Add one above.</p>
+
+    <ul class="list" id="todo-list" role="list" aria-label="Tasks"></ul>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
