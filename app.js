@@ -7,6 +7,7 @@
   var input = document.getElementById("todo-input");
   var listEl = document.getElementById("todo-list");
   var emptyEl = document.getElementById("empty-state");
+  var counterEl = document.getElementById("task-counter");
 
   /** @type {{ id: string, text: string, done: boolean }[]} */
   var tasks = [];
@@ -52,10 +53,27 @@
     }
   }
 
+  function updateCounter() {
+    var total = tasks.length;
+    var done = 0;
+    for (var i = 0; i < tasks.length; i++) {
+      if (tasks[i].done) done++;
+    }
+    var active = total - done;
+    var taskWord = total === 1 ? "task" : "tasks";
+    if (total === 0) {
+      counterEl.textContent = "0 tasks";
+    } else {
+      counterEl.textContent =
+        total + " " + taskWord + " · " + done + " done · " + active + " active";
+    }
+  }
+
   function render() {
     listEl.innerHTML = "";
     var hasTasks = tasks.length > 0;
     emptyEl.hidden = hasTasks;
+    updateCounter();
 
     for (var i = 0; i < tasks.length; i++) {
       var task = tasks[i];

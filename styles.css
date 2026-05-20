@@ -113,6 +113,13 @@ body {
   outline-offset: 2px;
 }
 
+.counter {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
 .empty {
   margin: 0 0 1rem;
   padding: 1rem;
