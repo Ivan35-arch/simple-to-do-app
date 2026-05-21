@@ -8,6 +8,7 @@
   var listEl = document.getElementById("todo-list");
   var emptyEl = document.getElementById("empty-state");
   var counterEl = document.getElementById("task-counter");
+  var clearAllBtn = document.getElementById("clear-all");
 
   /** @type {{ id: string, text: string, done: boolean }[]} */
   var tasks = [];
@@ -73,6 +74,7 @@
     listEl.innerHTML = "";
     var hasTasks = tasks.length > 0;
     emptyEl.hidden = hasTasks;
+    clearAllBtn.disabled = !hasTasks;
     updateCounter();
 
     for (var i = 0; i < tasks.length; i++) {
@@ -135,6 +137,18 @@
     render();
   }
 
+  function clearAllTasks() {
+    if (tasks.length === 0) return;
+    var taskWord = tasks.length === 1 ? "task" : "tasks";
+    if (!window.confirm("Clear all " + tasks.length + " " + taskWord + "? This cannot be undone.")) {
+      return;
+    }
+    tasks = [];
+    save();
+    render();
+    input.focus();
+  }
+
   listEl.addEventListener("change", function (e) {
     var t = e.target;
     if (t && t.dataset && t.dataset.action === "toggle" && t.dataset.id) {
@@ -155,6 +169,8 @@
     input.value = "";
     input.focus();
   });
+
+  clearAllBtn.addEventListener("click", clearAllTasks);
 
   load();
   render();

@@ -27,7 +27,18 @@
       </div>
     </form>
 
-    <p class="counter" id="task-counter" aria-live="polite"></p>
+    <div class="toolbar">
+      <p class="counter" id="task-counter" aria-live="polite"></p>
+      <button
+        class="toolbar__clear"
+        type="button"
+        id="clear-all"
+        disabled
+        aria-label="Clear all tasks"
+      >
+        Clear all
+      </button>
+    </div>
 
     <p class="empty" id="empty-state" hidden>No tasks yet. Add one above.</p>
 

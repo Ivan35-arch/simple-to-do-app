@@ -113,11 +113,47 @@ body {
   outline-offset: 2px;
 }
 
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
 .counter {
-  margin: 0 0 1rem;
+  margin: 0;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--muted);
+}
+
+.toolbar__clear {
+  flex-shrink: 0;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--danger);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toolbar__clear:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border-color: var(--danger);
+}
+
+.toolbar__clear:focus-visible {
+  outline: 2px solid var(--danger);
+  outline-offset: 2px;
+}
+
+.toolbar__clear:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .empty {
